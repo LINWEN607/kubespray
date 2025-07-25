@@ -87,7 +87,7 @@ docker_containerd_version: 1.6.32
 
 # gcr and kubernetes image repo define
 gcr_image_repo: "gcr.io"
-kube_image_repo: "registry.k8s.io"
+kube_image_repo: "registry.aliyuncs.com/google_containers"
 
 # docker image repo define
 docker_image_repo: "docker.io"
@@ -243,7 +243,7 @@ calico_typha_image_repo: "{{ quay_image_repo }}/calico/typha"
 calico_typha_image_tag: "{{ calico_typha_version }}"
 calico_apiserver_image_repo: "{{ quay_image_repo }}/calico/apiserver"
 calico_apiserver_image_tag: "{{ calico_apiserver_version }}"
-pod_infra_image_repo: "{{ kube_image_repo }}/pause"
+pod_infra_image_repo: "swr.cn-north-4.myhuaweicloud.com/ddn-k8s/registry.k8s.io/pause"
 pod_infra_image_tag: "{{ pod_infra_version }}"
 netcheck_version: "v1.2.2"
 netcheck_agent_image_repo: "{{ docker_image_repo }}/mirantis/k8s-netchecker-agent"
@@ -284,10 +284,10 @@ external_openstack_cloud_controller_image_tag: "v1.31.1"
 
 kube_vip_image_repo: "{{ github_image_repo }}/kube-vip/kube-vip"
 kube_vip_image_tag: v0.8.0
-nginx_image_repo: "{{ docker_image_repo }}/library/nginx"
+nginx_image_repo: "swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/nginx"
 nginx_image_tag: 1.25.2-alpine
-haproxy_image_repo: "{{ docker_image_repo }}/library/haproxy"
-haproxy_image_tag: 2.8.2-alpine
+haproxy_image_repo: "swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/library/haproxy"
+haproxy_image_tag: 3.0.5
 
 # Coredns version should be supported by corefile-migration (or at least work with)
 # bundle with kubeadm; if not 'basic' upgrade can sometimes fail
@@ -299,12 +299,12 @@ coredns_image_repo: "{{ kube_image_repo }}{{ '/coredns/coredns' if (coredns_imag
 coredns_image_tag: "{{ coredns_version if (coredns_image_is_namespaced | bool) else (coredns_version | regex_replace('^v', '')) }}"
 
 nodelocaldns_version: "1.22.28"
-nodelocaldns_image_repo: "{{ kube_image_repo }}/dns/k8s-dns-node-cache"
-nodelocaldns_image_tag: "{{ nodelocaldns_version }}"
+nodelocaldns_image_repo: "swr.cn-north-4.myhuaweicloud.com/ddn-k8s/registry.k8s.io/dns/k8s-dns-node-cache"
+nodelocaldns_image_tag: "1.22.28"
 
 dnsautoscaler_version: v1.8.8
-dnsautoscaler_image_repo: "{{ kube_image_repo }}/cpa/cluster-proportional-autoscaler"
-dnsautoscaler_image_tag: "{{ dnsautoscaler_version }}"
+dnsautoscaler_image_repo: "swr.cn-north-4.myhuaweicloud.com/ddn-k8s/registry.k8s.io/cpa/cluster-proportional-autoscaler"
+dnsautoscaler_image_tag: "v1.8.8"
 
 scheduler_plugins_controller_image_repo: "{{ kube_image_repo }}/scheduler-plugins/controller"
 scheduler_plugins_controller_image_tag: "{{ scheduler_plugins_version }}"
@@ -396,9 +396,9 @@ gcp_pd_csi_attacher_image_tag: "v2.1.1-gke.0"
 gcp_pd_csi_resizer_image_tag: "v0.4.0-gke.0"
 gcp_pd_csi_registrar_image_tag: "v1.2.0-gke.0"
 
-dashboard_image_repo: "{{ docker_image_repo }}/kubernetesui/dashboard"
+dashboard_image_repo: "swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/kubernetesui/dashboard"
 dashboard_image_tag: "v2.7.0"
-dashboard_metrics_scraper_repo: "{{ docker_image_repo }}/kubernetesui/metrics-scraper"
+dashboard_metrics_scraper_repo: "swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/kubernetesui/metrics-scraper"
 dashboard_metrics_scraper_tag: "v1.0.8"
 
 metallb_speaker_image_repo: "{{ quay_image_repo }}/metallb/speaker"
@@ -909,9 +909,9 @@ downloads:
   coredns:
     enabled: "{{ dns_mode in ['coredns', 'coredns_dual'] }}"
     container: true
-    repo: "{{ coredns_image_repo }}"
-    tag: "{{ coredns_image_tag }}"
-    sha256: "{{ coredns_digest_checksum | default(None) }}"
+    repo: "swr.cn-north-4.myhuaweicloud.com/ddn-k8s/registry.k8s.io/coredns/coredns"
+    tag: "v1.11.1"
+    sha256: ""
     groups:
       - k8s_cluster
 

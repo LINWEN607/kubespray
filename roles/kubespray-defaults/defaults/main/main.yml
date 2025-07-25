@@ -288,7 +288,7 @@ external_cloud_provider: ""
 deploy_container_engine: "{{ 'k8s_cluster' in group_names or etcd_deployment_type == 'docker' }}"
 
 # Container for runtime
-container_manager: containerd
+container_manager: docker
 
 # Enable Node Resource Interface in containerd or CRI-O. Requires crio_version >= v1.26.0
 # or containerd_version >= 1.7.0.

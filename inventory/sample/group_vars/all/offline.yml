@@ -9,6 +9,8 @@
 # debian_repo: "http://myinternaldebianrepo"
 ### If using Ubuntu
 # ubuntu_repo: "http://myinternalubunturepo"
+registry_host: "registry.aliyuncs.com/google_containers"
+kube_image_repo: "registry.aliyuncs.com/google_containers"
 
 ## Container Registry overrides
 # kube_image_repo: "{{ registry_host }}"
